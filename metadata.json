@@ -1,0 +1,6 @@
+{
+  "name": "Icon Listing",
+  "description": "An educational application designed for realtors to easily understand and explain the California Association of Realtors (C.A.R.) listing agreement package.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
