@@ -140,7 +140,7 @@ export const formsData: FormDocument[] = [
     keySections: [
       {
         title: 'General Disclosure Duties',
-        description: 'Seller MUST affirmatively disclose in writing all known facts that materially affect the value or desirability of the property (TDS, NHD).'
+        description: 'Seller MUST affirmatively disclose in writing all known facts that materially affect the value or desirability of the property (TDS, NHD, SPQ).'
       },
       {
         title: 'Pre-Sale Considerations',
