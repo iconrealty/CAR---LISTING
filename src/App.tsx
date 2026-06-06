@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { formsData } from './data';
 import Sidebar from './components/Sidebar';
 import FormDetails from './components/FormDetails';
@@ -26,13 +27,9 @@ export default function App() {
     <div className="h-screen bg-white flex flex-col font-sans overflow-hidden text-black selection:bg-zinc-200">
       {/* Sleek Minimal Header */}
       <header className="bg-white/80 backdrop-blur-xl border-b border-black/5 z-30 shrink-0 relative flex items-center h-14">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative h-full">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-2 text-black">
-            {/* Keep left spacer empty to allow perfect centering */}
-          </div>
-          
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-            <h1 className="text-sm font-semibold tracking-tight font-sans">Icon Realty Partners</h1>
+            <h1 className="text-sm font-semibold tracking-tight font-sans">Icon Realty Trainer</h1>
           </div>
 
           <div className="text-xs font-semibold text-zinc-500 hidden sm:block tracking-wide uppercase">C.A.R. Listing Package</div>

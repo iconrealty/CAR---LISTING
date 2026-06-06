@@ -15,7 +15,7 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
     <div className="h-full overflow-y-auto pb-20">
       <div className="p-6 md:px-12 md:py-12 max-w-5xl mx-auto w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
         
-        {onBack && (
+         {onBack && (
           <button 
             onClick={onBack}
             className="md:hidden flex items-center gap-1.5 text-blue-500 hover:text-blue-600 transition-colors font-medium mb-8 text-sm"
