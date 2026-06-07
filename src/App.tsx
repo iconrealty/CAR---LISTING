@@ -30,7 +30,7 @@ export default function App() {
       <header className="bg-white/80 backdrop-blur-xl border-b border-black/5 z-30 shrink-0 relative flex items-center h-14">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-2 text-black">
-            <h1 className="text-sm font-semibold tracking-tight font-sans">Icon Realty Trainer</h1>
+            <h1 className="text-sm font-semibold tracking-tight font-sans">Icon Realty</h1>
           </div>
 
           <div className="text-xs font-semibold text-zinc-500 hidden sm:block tracking-wide uppercase">C.A.R. Listing Package</div>
