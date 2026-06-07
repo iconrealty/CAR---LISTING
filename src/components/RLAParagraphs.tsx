@@ -32,12 +32,12 @@ const paragraphs = [
 const importantParagraphs = [1, 2, 4, 6, 19];
 
 const pageGroups = [
-  { pageNum: '1', name: 'Page 1 (Package Page 3)', colorKey: '1', paras: 'Paras 1–2' },
-  { pageNum: '2', name: 'Page 2 (Package Page 4)', colorKey: '2', paras: 'Paras 3–4' },
-  { pageNum: '3', name: 'Page 3 (Package Page 5)', colorKey: '3', paras: 'Paras 5–7' },
-  { pageNum: '4', name: 'Page 4 (Package Page 6)', colorKey: '4', paras: 'Paras 8–9' },
-  { pageNum: '5', name: 'Page 5 (Package Page 7)', colorKey: '5', paras: 'Paras 10–13' },
-  { pageNum: '6', name: 'Page 6 (Package Page 8)', colorKey: '6', paras: 'Paras 14–22' },
+  { pageNum: '1', name: 'Page 1', packageText: 'Package Page 3', colorKey: '1', paras: 'Paras 1–2' },
+  { pageNum: '2', name: 'Page 2', packageText: 'Package Page 4', colorKey: '2', paras: 'Paras 3–4' },
+  { pageNum: '3', name: 'Page 3', packageText: 'Package Page 5', colorKey: '3', paras: 'Paras 5–7' },
+  { pageNum: '4', name: 'Page 4', packageText: 'Package Page 6', colorKey: '4', paras: 'Paras 8–9' },
+  { pageNum: '5', name: 'Page 5', packageText: 'Package Page 7', colorKey: '5', paras: 'Paras 10–13' },
+  { pageNum: '6', name: 'Page 6', packageText: 'Package Page 8', colorKey: '6', paras: 'Paras 14–22' },
 ];
 
 const pageStyles: Record<string, {
@@ -53,9 +53,9 @@ const pageStyles: Record<string, {
   '1': {
     border: 'border-blue-100',
     bg: 'bg-blue-50/10',
-    headerBg: 'bg-blue-50/40 border-blue-100/60',
-    badge: 'bg-blue-50 border-blue-200/50',
-    badgeText: 'text-blue-700',
+    headerBg: 'bg-blue-50 border-b border-blue-100',
+    badge: 'bg-white border-blue-200 text-blue-800',
+    badgeText: 'text-blue-800',
     indicator: 'bg-blue-500',
     bulletBg: 'bg-blue-50 border-blue-200/60',
     bulletText: 'text-blue-700',
@@ -63,9 +63,9 @@ const pageStyles: Record<string, {
   '2': {
     border: 'border-purple-100',
     bg: 'bg-purple-50/10',
-    headerBg: 'bg-purple-50/40 border-purple-100/60',
-    badge: 'bg-purple-50 border-purple-200/50',
-    badgeText: 'text-purple-700',
+    headerBg: 'bg-purple-50 border-b border-purple-100',
+    badge: 'bg-white border-purple-200 text-purple-800',
+    badgeText: 'text-purple-800',
     indicator: 'bg-purple-500',
     bulletBg: 'bg-purple-50 border-purple-200/60',
     bulletText: 'text-purple-700',
@@ -73,9 +73,9 @@ const pageStyles: Record<string, {
   '3': {
     border: 'border-amber-100',
     bg: 'bg-amber-50/10',
-    headerBg: 'bg-amber-50/40 border-amber-100/60',
-    badge: 'bg-amber-50 border-amber-200/50',
-    badgeText: 'text-amber-700',
+    headerBg: 'bg-amber-50 border-b border-amber-100',
+    badge: 'bg-white border-amber-200 text-amber-800',
+    badgeText: 'text-amber-800',
     indicator: 'bg-amber-500',
     bulletBg: 'bg-amber-50 border-amber-200/60',
     bulletText: 'text-amber-700',
@@ -83,9 +83,9 @@ const pageStyles: Record<string, {
   '4': {
     border: 'border-emerald-100',
     bg: 'bg-emerald-50/10',
-    headerBg: 'bg-emerald-50/40 border-emerald-100/60',
-    badge: 'bg-emerald-50 border-emerald-200/50',
-    badgeText: 'text-emerald-700',
+    headerBg: 'bg-emerald-50 border-b border-emerald-100',
+    badge: 'bg-white border-emerald-200 text-emerald-800',
+    badgeText: 'text-emerald-800',
     indicator: 'bg-emerald-500',
     bulletBg: 'bg-emerald-50 border-emerald-200/60',
     bulletText: 'text-emerald-700',
@@ -93,9 +93,9 @@ const pageStyles: Record<string, {
   '5': {
     border: 'border-indigo-100',
     bg: 'bg-indigo-50/10',
-    headerBg: 'bg-indigo-50/40 border-indigo-100/60',
-    badge: 'bg-indigo-50 border-indigo-200/50',
-    badgeText: 'text-indigo-700',
+    headerBg: 'bg-indigo-50 border-b border-indigo-100',
+    badge: 'bg-white border-indigo-200 text-indigo-800',
+    badgeText: 'text-indigo-800',
     indicator: 'bg-indigo-500',
     bulletBg: 'bg-indigo-50 border-indigo-200/60',
     bulletText: 'text-indigo-700',
@@ -103,9 +103,9 @@ const pageStyles: Record<string, {
   '6': {
     border: 'border-rose-100',
     bg: 'bg-rose-50/10',
-    headerBg: 'bg-rose-50/40 border-rose-100/60',
-    badge: 'bg-rose-50 border-rose-200/50',
-    badgeText: 'text-rose-700',
+    headerBg: 'bg-rose-50 border-b border-rose-100',
+    badge: 'bg-white border-rose-200 text-rose-800',
+    badgeText: 'text-rose-800',
     indicator: 'bg-rose-500',
     bulletBg: 'bg-rose-50 border-rose-200/60',
     bulletText: 'text-rose-700',
@@ -146,14 +146,17 @@ export default function RLAParagraphs({ onBack }: RLAParagraphsProps) {
                 className={`rounded-2xl border ${style.border} ${style.bg} overflow-hidden shadow-2xs`}
               >
                 {/* Clean Header for the Group */}
-                <div className={`px-6 py-4 border-b ${style.headerBg} flex items-center justify-between`}>
-                  <div className="flex items-center gap-2.5">
-                    <span className={`text-sm sm:text-base font-black uppercase tracking-tight px-3 py-1 rounded-lg border ${style.badge} ${style.badgeText}`}>
+                <div className={`px-6 py-4 ${style.headerBg} flex items-center justify-between gap-4 flex-wrap sm:flex-nowrap`}>
+                  <div className="flex items-center gap-3">
+                    <span className={`text-sm sm:text-base font-black uppercase tracking-tight px-3 py-1 rounded-lg border ${style.badge}`}>
                       {group.name}
                     </span>
+                    <span className={`text-xs sm:text-sm font-bold uppercase tracking-wider ${style.badgeText}`}>
+                      {group.paras}
+                    </span>
                   </div>
-                  <span className={`text-sm font-black tracking-tight ${style.badgeText}`}>
-                    {group.paras}
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-zinc-600 bg-white/80 px-3 py-1 rounded-lg border border-zinc-200/50 shadow-xs shrink-0">
+                    {group.packageText}
                   </span>
                 </div>
 
@@ -167,16 +170,18 @@ export default function RLAParagraphs({ onBack }: RLAParagraphsProps) {
                         className="p-6 md:p-8 hover:bg-[#F5F5F7]/20 transition-colors relative"
                       >
                         <div className="flex items-start gap-5">
-                          {/* Round colored badge counter */}
-                          <div className={`w-11 h-11 rounded-xl flex items-center justify-center font-display text-base font-bold shrink-0 border ${style.bulletBg} ${style.bulletText}`}>
+                          {/* Rich neutral badge counter (Apple/Minimal style) */}
+                          <div className="w-11 h-11 rounded-xl bg-[#F5F5F7] text-zinc-800 border border-black/[0.04] flex items-center justify-center font-display text-base font-bold shrink-0">
                             {paragraph.id}
                           </div>
 
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-semibold text-black mb-1.5 font-display flex items-baseline gap-2 flex-wrap">
-                              <span>{paragraph.title}</span>
+                            <h3 className="text-lg font-semibold mb-1.5 font-display flex items-baseline gap-2 flex-wrap">
+                              <span className={isImportant ? "text-red-600" : "text-black"}>
+                                {paragraph.title}
+                              </span>
                               {isImportant && (
-                                <span className="text-[9px] font-bold uppercase tracking-wider text-red-600 bg-red-50 border border-red-150 px-2 py-0.5 rounded">
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-md">
                                   Critical
                                 </span>
                               )}
