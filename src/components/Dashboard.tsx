@@ -1,5 +1,5 @@
 import { formsData } from '../data';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, FileText, ExternalLink } from 'lucide-react';
 
 interface DashboardProps {
   onBack?: () => void;
@@ -26,10 +26,36 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
         )}
 
         {/* Header */}
-        <div className="mb-12 relative flex flex-col items-start pt-4">
+        <div className="mb-8 relative flex flex-col items-start pt-4">
           <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-[1.1] font-display">
             Package Overview
           </h1>
+        </div>
+
+        {/* Full PDF Package CTA Banner */}
+        <div className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white rounded-3xl p-6 md:p-8 mb-8 border border-zinc-800 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
+          <div className="absolute right-0 top-0 w-96 h-96 bg-zinc-800/20 rounded-full blur-3xl pointer-events-none translate-x-12 -translate-y-12"></div>
+          
+          <div className="flex-1 min-w-0 z-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 rounded-full text-[10px] md:text-xs font-semibold uppercase tracking-wider text-zinc-300 border border-white/10 mb-3 md:mb-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Full Package Access
+            </div>
+            <h2 className="text-2xl font-bold tracking-tight font-display text-white mt-1.5">Full 21-Page Original Package</h2>
+          </div>
+          
+          <div className="flex flex-col gap-3 w-full md:w-auto shrink-0 z-10 justify-center">
+            <a 
+              href="/RLA_Full_Package.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black hover:bg-zinc-150 font-bold text-sm tracking-tight transition-all duration-200 shadow-md group border border-transparent"
+            >
+              <FileText className="w-4 h-4 text-black" />
+              Open Original PDF Package
+              <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+            </a>
+          </div>
         </div>
 
         {/* Stats Grid */}

@@ -19,6 +19,7 @@ export default function App() {
   };
 
   const handleBack = () => {
+    setSelectedFormId('overview');
     setShowDetailOnMobile(false);
   };
 
