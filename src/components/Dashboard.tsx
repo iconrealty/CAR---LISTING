@@ -41,7 +41,7 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               Full Package Access
             </div>
-            <h2 className="text-2xl font-bold tracking-tight font-display text-white mt-1.5">Full 21-Page Original Package</h2>
+            <h2 className="text-2xl font-bold tracking-tight font-display text-white mt-1.5">Full 21-Page Package</h2>
           </div>
           
           <div className="flex flex-col gap-3 w-full md:w-auto shrink-0 z-10 justify-center">
@@ -52,7 +52,7 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
               className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black hover:bg-zinc-150 font-bold text-sm tracking-tight transition-all duration-200 shadow-md group border border-transparent"
             >
               <FileText className="w-4 h-4 text-black" />
-              Open Original PDF Package
+              Open PDF Package
               <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
             </a>
           </div>
