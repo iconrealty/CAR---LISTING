@@ -4,8 +4,6 @@ import { formsData } from './data';
 import Sidebar from './components/Sidebar';
 import FormDetails from './components/FormDetails';
 import Dashboard from './components/Dashboard';
-import RLADeepDive from './components/RLADeepDive';
-import RLAParagraphs from './components/RLAParagraphs';
 
 export default function App() {
   const [selectedFormId, setSelectedFormId] = useState('overview');
@@ -41,7 +39,7 @@ export default function App() {
       <div className="flex-1 flex overflow-hidden w-full relative">
         {/* Sidebar Navigation */}
         <div 
-          className={`w-full md:w-[300px] lg:w-[340px] flex-shrink-0 border-r border-black/5 bg-[#F5F5F7] absolute md:relative inset-y-0 left-0 z-20 transition-transform duration-300 transform ${
+          className={`w-full md:w-[300px] lg:w-[340px] flex-shrink-0 border-r border-[#E5E5E7] bg-[#F5F5F7] absolute md:relative inset-y-0 left-0 z-20 transition-transform duration-300 transform ${
             showDetailOnMobile ? '-translate-x-full md:translate-x-0' : 'translate-x-0'
           }`}
         >
@@ -60,10 +58,6 @@ export default function App() {
         >
           {selectedFormId === 'overview' ? (
             <Dashboard onBack={handleBack} onSelectForm={handleSelect} />
-          ) : selectedFormId === 'rla-deep-dive' ? (
-            <RLADeepDive onBack={handleBack} />
-          ) : selectedFormId === 'rla-paragraphs' ? (
-            <RLAParagraphs onBack={handleBack} />
           ) : (
             selectedForm && <FormDetails form={selectedForm} onBack={handleBack} />
           )}

@@ -32,7 +32,7 @@ export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProp
         >
           <div className="flex-1 min-w-0">
             <div className={`font-semibold text-sm tracking-tight font-sans ${selectedFormId === 'overview' ? 'text-white' : 'text-black'}`}>
-              Package Overview
+              Listing Package Overview
             </div>
           </div>
         </button>
@@ -71,41 +71,7 @@ export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProp
           );
         })}
 
-        <button
-          onClick={() => onSelect('rla-deep-dive')}
-          className={`w-full text-left p-3.5 mt-4 rounded-[14px] transition-all duration-200 flex items-center gap-3.5 group ${
-            selectedFormId === 'rla-deep-dive'
-              ? 'bg-zinc-900 text-white shadow-md'
-              : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
-          }`}
-        >
-          <div className="flex-1 min-w-0">
-            <div className={`font-bold text-sm tracking-tight font-sans ${selectedFormId === 'rla-deep-dive' ? 'text-white' : 'text-zinc-900'}`}>
-              RLA Deep Dive (A-K)
-            </div>
-            <div className={`text-xs truncate font-medium font-sans mt-0.5 opacity-90 ${selectedFormId === 'rla-deep-dive' ? 'text-zinc-300' : 'text-zinc-500'}`}>
-              Paragraph 2
-            </div>
-          </div>
-        </button>
 
-        <button
-          onClick={() => onSelect('rla-paragraphs')}
-          className={`w-full text-left p-3.5 mt-2 rounded-[14px] transition-all duration-200 flex items-center gap-3.5 group ${
-            selectedFormId === 'rla-paragraphs'
-              ? 'bg-zinc-900 text-white shadow-md'
-              : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
-          }`}
-        >
-          <div className="flex-1 min-w-0">
-            <div className={`font-bold text-sm tracking-tight font-sans ${selectedFormId === 'rla-paragraphs' ? 'text-white' : 'text-zinc-900'}`}>
-              RLA Paragraphs
-            </div>
-            <div className={`text-xs truncate font-medium font-sans mt-0.5 opacity-90 ${selectedFormId === 'rla-paragraphs' ? 'text-zinc-300' : 'text-zinc-500'}`}>
-              All 22 Paragraphs
-            </div>
-          </div>
-        </button>
       </nav>
     </aside>
   );

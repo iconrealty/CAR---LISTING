@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react';
 
 interface RLAParagraphsProps {
   onBack?: () => void;
+  isEmbedded?: boolean;
 }
 
 const paragraphs = [
@@ -112,7 +113,76 @@ const pageStyles: Record<string, {
   },
 };
 
-export default function RLAParagraphs({ onBack }: RLAParagraphsProps) {
+export default function RLAParagraphs({ onBack, isEmbedded = false }: RLAParagraphsProps) {
+  if (isEmbedded) {
+    return (
+      <div className="space-y-8 pt-2 animate-in fade-in slide-in-from-bottom-3 duration-300">
+        {pageGroups.map((group) => {
+          const style = pageStyles[group.colorKey];
+          const groupParas = paragraphs.filter((p) => p.formPage === group.pageNum);
+
+          return (
+            <div 
+              key={group.pageNum}
+              className={`rounded-3xl border ${style.border} ${style.bg} overflow-hidden shadow-xs`}
+            >
+              {/* Clean Header for the Group */}
+              <div className={`px-6 py-4 ${style.headerBg} flex items-center justify-between gap-4 flex-wrap sm:flex-nowrap`}>
+                <div className="flex items-center gap-3">
+                  <span className={`text-sm sm:text-base font-black uppercase tracking-tight px-3 py-1 rounded-lg border ${style.badge}`}>
+                    {group.name}
+                  </span>
+                  <span className={`text-xs sm:text-sm font-bold uppercase tracking-wider ${style.badgeText}`}>
+                    {group.paras}
+                  </span>
+                </div>
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-zinc-600 bg-white/80 px-3 py-1 rounded-lg border border-zinc-200/50 shadow-xs shrink-0">
+                  {group.packageText}
+                </span>
+              </div>
+
+              {/* Paragraph Items */}
+              <div className="divide-y divide-black/5 bg-white">
+                {groupParas.map((paragraph) => {
+                  const isImportant = importantParagraphs.includes(paragraph.id);
+                  return (
+                    <div 
+                      key={paragraph.id} 
+                      className="p-6 md:p-8 hover:bg-[#F5F5F7]/20 transition-colors relative"
+                    >
+                      <div className="flex items-start gap-5">
+                        {/* Rich neutral badge counter (Apple/Minimal style) */}
+                        <div className="w-11 h-11 rounded-xl bg-[#F5F5F7] text-zinc-800 border border-black/[0.04] flex items-center justify-center font-display text-base font-bold shrink-0">
+                          {paragraph.id}
+                        </div>
+
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-lg font-semibold mb-1.5 font-display flex items-baseline gap-2 flex-wrap">
+                            <span className={isImportant ? "text-red-600" : "text-black"}>
+                              {paragraph.title}
+                            </span>
+                            {isImportant && (
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-md">
+                                Critical
+                              </span>
+                            )}
+                          </h3>
+                          <p className="text-zinc-500 leading-relaxed font-semibold text-sm sm:text-base">
+                            {paragraph.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="h-full overflow-y-auto bg-white">
       <div className="max-w-4xl mx-auto px-6 py-10 md:py-16">

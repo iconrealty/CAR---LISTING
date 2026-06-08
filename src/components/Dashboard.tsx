@@ -28,7 +28,7 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
         {/* Header */}
         <div className="mb-8 relative flex flex-col items-start pt-4">
           <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-[1.1] font-display">
-            Package Overview
+            Listing Package Overview
           </h1>
         </div>
 

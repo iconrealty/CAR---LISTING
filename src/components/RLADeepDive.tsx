@@ -2,6 +2,7 @@ import { ArrowLeft, FileText } from 'lucide-react';
 
 interface RLADeepDiveProps {
   onBack?: () => void;
+  isEmbedded?: boolean;
 }
 
 const rlaRows = [
@@ -103,7 +104,43 @@ const rlaRows = [
   },
 ];
 
-export default function RLADeepDive({ onBack }: RLADeepDiveProps) {
+export default function RLADeepDive({ onBack, isEmbedded = false }: RLADeepDiveProps) {
+  if (isEmbedded) {
+    return (
+      <div className="space-y-6 pt-2 animate-in fade-in slide-in-from-bottom-3 duration-300">
+        {rlaRows.map((row) => (
+          <div key={row.id} className="bg-white border border-black/5 rounded-3xl p-6 md:p-8 hover:border-black/10 transition-colors shadow-xs">
+            <div className="flex items-start gap-5">
+              <div className="bg-black text-white w-12 h-12 rounded-xl flex items-center justify-center font-display text-2xl font-bold shrink-0">
+                {row.id}
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-xl font-bold text-black font-display mb-2">{row.title}</h3>
+                <p className="text-zinc-600 leading-relaxed font-semibold mb-4">{row.content}</p>
+                
+                {row.subRows && row.subRows.length > 0 && (
+                  <div className="space-y-3 mt-4 pt-4 border-t border-black/5">
+                    {row.subRows.map((subRow) => (
+                      <div key={subRow.id} className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-start">
+                        <span className="bg-[#F5F5F7] px-2 py-1 rounded text-xs font-bold text-zinc-600 shrink-0 self-start">
+                          {row.id}.{subRow.id}
+                        </span>
+                        <div>
+                          <span className="font-bold text-zinc-800 text-sm block sm:inline">{subRow.title}</span>
+                          <span className="text-zinc-500 text-sm sm:ml-2 block sm:inline font-medium">{subRow.description}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="h-full overflow-y-auto bg-white">
       <div className="max-w-4xl mx-auto px-6 py-10 md:py-16">
