@@ -33,41 +33,90 @@ export default function FormDetails({ form, onBack }: FormDetailsProps) {
         {/* Header */}
         <div className="mb-12 relative flex flex-col items-start pt-4">
           <div className="w-full mb-8">
-            {/* Main Tabs (Total Pages, Page Range) */}
-            <div className="grid grid-cols-2 gap-4 sm:gap-5 w-full sm:max-w-md">
-              <div className="bg-[#F5F5F7] rounded-3xl p-5 border border-transparent transition-colors hover:border-black/5 flex flex-col items-center justify-center text-center">
-                <div className="flex items-center justify-center mb-3">
-                  <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Total Pages</h3>
+            {/* Main Tabs (Total Pages, Page Range, and 22 Paragraphs on RLA) */}
+            <div className={`grid ${form.id === 'rla' ? 'grid-cols-3' : 'grid-cols-2'} gap-4 sm:gap-5 w-full ${form.id === 'rla' ? 'sm:max-w-xl' : 'sm:max-w-md'}`}>
+              {form.id === 'rla' ? (
+                <button
+                  onClick={() => setRlaTab('overview')}
+                  className={`rounded-3xl p-5 border transition-all flex flex-col items-center justify-center text-center cursor-pointer ${
+                    rlaTab === 'overview'
+                      ? 'border-black bg-white shadow-xs'
+                      : 'border-transparent bg-[#F5F5F7] hover:border-black/5'
+                  }`}
+                >
+                  <div className="flex items-center justify-center mb-3">
+                    <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Total Pages</h3>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-semibold text-black font-display">{form.stats.pages}</div>
+                </button>
+              ) : (
+                <div className="bg-[#F5F5F7] rounded-3xl p-5 border border-transparent transition-colors hover:border-black/5 flex flex-col items-center justify-center text-center">
+                  <div className="flex items-center justify-center mb-3">
+                    <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Total Pages</h3>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-semibold text-black font-display">{form.stats.pages}</div>
                 </div>
-                <div className="text-3xl md:text-4xl font-semibold text-black font-display">{form.stats.pages}</div>
-              </div>
-              <div className="bg-[#F5F5F7] rounded-3xl p-5 border border-transparent transition-colors hover:border-black/5 flex flex-col items-center justify-center text-center">
-                <div className="flex items-center justify-center mb-3">
-                  <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Page Range</h3>
+              )}
+
+              {form.id === 'rla' ? (
+                <button
+                  onClick={() => setRlaTab('overview')}
+                  className={`rounded-3xl p-5 border transition-all flex flex-col items-center justify-center text-center cursor-pointer ${
+                    rlaTab === 'overview'
+                      ? 'border-black bg-white shadow-xs'
+                      : 'border-transparent bg-[#F5F5F7] hover:border-black/5'
+                  }`}
+                >
+                  <div className="flex items-center justify-center mb-3">
+                    <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Page Range</h3>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-semibold text-black font-display">{form.stats.startPage}-{form.stats.endPage}</div>
+                </button>
+              ) : (
+                <div className="bg-[#F5F5F7] rounded-3xl p-5 border border-transparent transition-colors hover:border-black/5 flex flex-col items-center justify-center text-center">
+                  <div className="flex items-center justify-center mb-3">
+                    <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Page Range</h3>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-semibold text-black font-display">{form.stats.startPage}-{form.stats.endPage}</div>
                 </div>
-                <div className="text-3xl md:text-4xl font-semibold text-black font-display">{form.stats.startPage}-{form.stats.endPage}</div>
-              </div>
+              )}
+
+              {form.id === 'rla' && (
+                <button
+                  onClick={() => setRlaTab('paragraphs')}
+                  className={`rounded-3xl p-5 border transition-all flex flex-col items-center justify-center text-center cursor-pointer ${
+                    rlaTab === 'paragraphs'
+                      ? 'border-black bg-white shadow-xs'
+                      : 'border-transparent bg-[#F5F5F7] hover:border-black/5'
+                  }`}
+                >
+                  <div className="flex items-center justify-center mb-3">
+                    <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Paragraphs</h3>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-semibold text-black font-display">22</div>
+                </button>
+              )}
             </div>
 
             {/* Compact Seller Signatures, Agent Signatures, and Initials Required Indicator below them */}
             {(form.stats.signatures > 0 || form.stats.agentSignatures > 0 || form.stats.initials > 0) && (
               <div className="flex flex-wrap gap-2.5 mt-4">
                 {form.stats.signatures > 0 && (
-                  <div className="bg-[#F5F5F7]/80 hover:bg-[#F5F5F7] border border-black/[0.03] px-4 py-2 rounded-2xl flex items-center gap-2 transition-colors">
-                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-sans">Seller Signatures:</span>
-                    <span className="text-sm font-bold text-black font-display">{form.stats.signatures}</span>
+                  <div className="bg-black hover:bg-black/90 border border-transparent px-4 py-2 rounded-2xl flex items-center gap-2 transition-colors">
+                    <span className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider font-sans">Seller Signatures:</span>
+                    <span className="text-sm font-bold text-white font-display">{form.stats.signatures}</span>
                   </div>
                 )}
                 {form.stats.agentSignatures > 0 && (
-                  <div className="bg-[#F5F5F7]/80 hover:bg-[#F5F5F7] border border-black/[0.03] px-4 py-2 rounded-2xl flex items-center gap-2 transition-colors">
-                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-sans">Agent Signatures:</span>
-                    <span className="text-sm font-bold text-black font-display">{form.stats.agentSignatures}</span>
+                  <div className="bg-black hover:bg-black/90 border border-transparent px-4 py-2 rounded-2xl flex items-center gap-2 transition-colors">
+                    <span className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider font-sans">Agent Signatures:</span>
+                    <span className="text-sm font-bold text-white font-display">{form.stats.agentSignatures}</span>
                   </div>
                 )}
                 {form.stats.initials > 0 && (
-                  <div className="bg-[#F5F5F7]/80 hover:bg-[#F5F5F7] border border-black/[0.03] px-4 py-2 rounded-2xl flex items-center gap-2 transition-colors">
-                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-sans">Initials:</span>
-                    <span className="text-sm font-bold text-black font-display">{form.stats.initials}</span>
+                  <div className="bg-black hover:bg-black/90 border border-transparent px-4 py-2 rounded-2xl flex items-center gap-2 transition-colors">
+                    <span className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider font-sans">Initials:</span>
+                    <span className="text-sm font-bold text-white font-display">{form.stats.initials}</span>
                   </div>
                 )}
               </div>

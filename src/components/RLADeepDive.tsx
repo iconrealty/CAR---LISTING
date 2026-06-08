@@ -20,8 +20,8 @@ const rlaRows = [
     title: 'Property Type', 
     content: 'Specifies the asset class and type of property being listed.',
     subRows: [
-      { id: '1', title: 'Standard / Mobile / Manufactured', description: 'Checkboxes to identify whether the property is a standard home, mobile home, or manufactured home.' },
-      { id: '2', title: 'Probate / Trust / Conservatorship', description: 'Identifies if the sale is subject to specialized legal procedures or court confirmation.' },
+      { id: '1', title: 'Standard / Mobile / Manufactured', description: 'Checkboxes to identify whether the property is a standard home, mobile home, or manufactured home. MHLA Required' },
+      { id: '2', title: 'Probate / Trust / Conservatorship', description: 'Identifies if the sale is subject to specialized legal procedures or court confirmation. PLA required' },
     ]
   },
   { 
@@ -71,18 +71,14 @@ const rlaRows = [
   { 
     id: 'G', 
     title: 'Exceptions to Ownership', 
-    content: 'Lists any known exceptions to the seller\'s clean title.',
-    subRows: [
-      { id: '1', title: 'Title Issues', description: 'Notice of any recorded or unrecorded liens, easements, or encumbrances on the property.' },
-      { id: '2', title: 'Leased/Liened Items', description: 'Solar panels, alarm systems, or propane tanks that are currently leased or have liens.' }
-    ]
+    content: 'Exceptions to Ownership is where the seller discloses if someone other than the seller has rights, claims, or interests in the property that could affect the sale.',
   },
   { 
     id: 'H', 
     title: 'Seller Contingency on Replacement Property', 
     content: 'Conditions related to the seller finding a replacement property (Using form SPRP).',
     subRows: [
-      { id: '1', title: 'SPRP Addendum', description: 'Indicates the sale is contingent on the seller purchasing a new home.' },
+      { id: '1', title: 'SPRP Addendum', description: 'Indicates the sale is contingent on the seller purchasing a new home, and this form will be presented with the offer.' },
     ]
   },
   { 
@@ -97,10 +93,7 @@ const rlaRows = [
   { 
     id: 'K', 
     title: 'Additional Terms', 
-    content: 'Any other negotiated terms or conditions not covered in the standard sections.',
-    subRows: [
-      { id: '1', title: 'Write-in Terms', description: 'Blank space for any custom-typed or handwritten addendums to this listing agreement.' },
-    ]
+    content: 'Blank space for any custom-typed or handwritten addendums to this listing agreement.',
   },
 ];
 
@@ -116,15 +109,17 @@ export default function RLADeepDive({ onBack, isEmbedded = false }: RLADeepDiveP
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-xl font-bold text-black font-display mb-2">{row.title}</h3>
-                <p className="text-zinc-600 leading-relaxed font-semibold mb-4">{row.content}</p>
+                {row.content && <p className="text-zinc-600 leading-relaxed font-semibold mb-4">{row.content}</p>}
                 
                 {row.subRows && row.subRows.length > 0 && (
                   <div className="space-y-3 mt-4 pt-4 border-t border-black/5">
                     {row.subRows.map((subRow) => (
                       <div key={subRow.id} className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-start">
-                        <span className="bg-[#F5F5F7] px-2 py-1 rounded text-xs font-bold text-zinc-600 shrink-0 self-start">
-                          {row.id}.{subRow.id}
-                        </span>
+                        {row.id !== 'J' && row.id !== 'H' && row.id !== 'B' && (
+                          <span className="bg-[#F5F5F7] px-2 py-1 rounded text-xs font-bold text-zinc-600 shrink-0 self-start">
+                            {row.id}.{subRow.id}
+                          </span>
+                        )}
                         <div>
                           <span className="font-bold text-zinc-800 text-sm block sm:inline">{subRow.title}</span>
                           <span className="text-zinc-500 text-sm sm:ml-2 block sm:inline font-medium">{subRow.description}</span>
@@ -190,15 +185,17 @@ export default function RLADeepDive({ onBack, isEmbedded = false }: RLADeepDiveP
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-black font-display mb-2">{row.title}</h3>
-                  <p className="text-zinc-600 leading-relaxed font-medium mb-4">{row.content}</p>
+                  {row.content && <p className="text-zinc-600 leading-relaxed font-medium mb-4">{row.content}</p>}
                   
                   {row.subRows && row.subRows.length > 0 && (
                     <div className="space-y-3 mt-4 pt-4 border-t border-black/5">
                       {row.subRows.map((subRow) => (
                         <div key={subRow.id} className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-start">
-                          <span className="bg-[#F5F5F7] px-2 py-1 rounded text-xs font-bold text-zinc-600 shrink-0 self-start">
-                            {row.id}.{subRow.id}
-                          </span>
+                          {row.id !== 'J' && row.id !== 'H' && row.id !== 'B' && (
+                            <span className="bg-[#F5F5F7] px-2 py-1 rounded text-xs font-bold text-zinc-600 shrink-0 self-start">
+                              {row.id}.{subRow.id}
+                            </span>
+                          )}
                           <div>
                             <span className="font-semibold text-black text-sm block sm:inline">{subRow.title}</span>
                             <span className="text-zinc-500 text-sm sm:ml-2 block sm:inline">{subRow.description}</span>
