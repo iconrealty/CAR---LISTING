@@ -33,12 +33,12 @@ const paragraphs = [
 const importantParagraphs = [1, 2, 4, 6, 19];
 
 const pageGroups = [
-  { pageNum: '1', name: 'Page 1', packageText: 'Package Page 3', colorKey: '1', paras: 'Paras 1–2' },
-  { pageNum: '2', name: 'Page 2', packageText: 'Package Page 4', colorKey: '2', paras: 'Paras 3–4' },
-  { pageNum: '3', name: 'Page 3', packageText: 'Package Page 5', colorKey: '3', paras: 'Paras 5–7' },
-  { pageNum: '4', name: 'Page 4', packageText: 'Package Page 6', colorKey: '4', paras: 'Paras 8–9' },
-  { pageNum: '5', name: 'Page 5', packageText: 'Package Page 7', colorKey: '5', paras: 'Paras 10–13' },
-  { pageNum: '6', name: 'Page 6', packageText: 'Package Page 8', colorKey: '6', paras: 'Paras 14–22' },
+  { pageNum: '1', name: 'Page 1', packageText: 'Package Page 3', colorKey: '1', paras: 'Paras 1-2' },
+  { pageNum: '2', name: 'Page 2', packageText: 'Package Page 4', colorKey: '2', paras: 'Paras 3-4' },
+  { pageNum: '3', name: 'Page 3', packageText: 'Package Page 5', colorKey: '3', paras: 'Paras 5-7' },
+  { pageNum: '4', name: 'Page 4', packageText: 'Package Page 6', colorKey: '4', paras: 'Paras 8-9' },
+  { pageNum: '5', name: 'Page 5', packageText: 'Package Page 7', colorKey: '5', paras: 'Paras 10-13' },
+  { pageNum: '6', name: 'Page 6', packageText: 'Package Page 8', colorKey: '6', paras: 'Paras 14-22' },
 ];
 
 const pageStyles: Record<string, {
