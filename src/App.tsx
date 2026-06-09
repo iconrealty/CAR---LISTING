@@ -89,9 +89,12 @@ export default function App() {
       {activePackage === null ? (
         <div className="flex-1 overflow-y-auto bg-[#F5F5F7] py-12 px-4 sm:px-6 lg:px-8 flex flex-col md:justify-center justify-start items-center">
           <div className="max-w-4xl w-full text-center mb-12 animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-1.1 mb-4 font-display">
+            <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-1.1 mb-1 font-display">
               Contract Masterclass
             </h1>
+            <p className="text-zinc-500 font-sans text-sm md:text-base font-medium tracking-wide">
+              by <span className="text-black font-semibold">Paul Muner</span>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
