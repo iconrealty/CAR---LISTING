@@ -105,7 +105,7 @@ export default function App() {
               
               <h2 className="text-2xl font-bold font-display text-black mb-3 z-10 flex items-center gap-2">
                 Listing Package
-                <span className="text-xs font-bold text-zinc-400 font-sans border border-black/10 px-2 py-0.5 rounded-full uppercase tracking-wider bg-zinc-50">
+                <span className="text-[10px] font-bold text-white font-sans bg-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                   Seller
                 </span>
               </h2>
@@ -141,7 +141,7 @@ export default function App() {
 
               <h2 className="text-2xl font-bold font-display text-black mb-3 z-10 flex items-center gap-2">
                 Offer Package
-                <span className="text-xs font-bold text-zinc-400 font-sans border border-black/10 px-2 py-0.5 rounded-full uppercase tracking-wider bg-zinc-50">
+                <span className="text-[10px] font-bold text-white font-sans bg-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                   Buyer
                 </span>
               </h2>
