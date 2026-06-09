@@ -1,15 +1,18 @@
-import { formsData } from '../data';
+import { formsData, offerFormsData } from '../data';
 import { ArrowLeft, FileText, ExternalLink } from 'lucide-react';
 
 interface DashboardProps {
   onBack?: () => void;
   onSelectForm?: (id: string) => void;
+  activePackage: 'listing' | 'offer';
+  onSwitchPackage: (pkg: 'listing' | 'offer') => void;
 }
 
-export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
-  const totalPages = formsData.reduce((acc, form) => acc + form.stats.pages, 0);
-  const totalSignatures = formsData.reduce((acc, form) => acc + form.stats.signatures, 0);
-  const totalInitials = formsData.reduce((acc, form) => acc + form.stats.initials, 0);
+export default function Dashboard({ onBack, onSelectForm, activePackage, onSwitchPackage }: DashboardProps) {
+  const forms = activePackage === 'listing' ? formsData : offerFormsData;
+  const totalPages = forms.reduce((acc, form) => acc + form.stats.pages, 0);
+  const totalSignatures = forms.reduce((acc, form) => acc + form.stats.signatures, 0);
+  const totalInitials = forms.reduce((acc, form) => acc + form.stats.initials, 0);
 
   return (
     <div className="h-full overflow-y-auto pb-20">
@@ -26,30 +29,56 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
         )}
 
         {/* Header */}
-        <div className="mb-8 relative flex flex-col items-start pt-4">
-          <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-[1.1] font-display">
-            Listing Package Overview
+        <div className="mb-8 relative flex flex-col items-start pt-4 font-sans">
+          <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-[1.1] font-display mb-4">
+            {activePackage === 'listing' ? 'Listing Package Overview' : 'Offer Package Overview'}
           </h1>
         </div>
 
+        {/* Dashboard Package switcher */}
+        <div className="mb-8 flex bg-[#F5F5F7] p-1 rounded-2xl border border-black/5 w-full sm:max-w-md select-none shrink-0 font-sans">
+          <button
+            onClick={() => onSwitchPackage('listing')}
+            className={`flex-1 py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer text-center text-sm ${
+              activePackage === 'listing' 
+                ? 'bg-white text-black shadow-xs font-bold' 
+                : 'text-zinc-550 hover:text-black font-semibold'
+            }`}
+          >
+            Listing Package
+          </button>
+          <button
+            onClick={() => onSwitchPackage('offer')}
+            className={`flex-1 py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer text-center text-sm ${
+              activePackage === 'offer' 
+                ? 'bg-white text-black shadow-xs font-bold' 
+                : 'text-zinc-550 hover:text-black font-semibold'
+            }`}
+          >
+            Offer Package
+          </button>
+        </div>
+
         {/* Full PDF Package CTA Banner */}
-        <div className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white rounded-3xl p-6 md:p-8 mb-8 border border-zinc-800 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
+        <div className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white rounded-3xl p-6 md:p-8 mb-8 border border-zinc-800 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 font-sans">
           <div className="absolute right-0 top-0 w-96 h-96 bg-zinc-800/20 rounded-full blur-3xl pointer-events-none translate-x-12 -translate-y-12"></div>
           
-          <div className="flex-1 min-w-0 z-10">
+          <div className="flex-1 min-w-0 z-10 animate-in fade-in duration-300">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 rounded-full text-[10px] md:text-xs font-semibold uppercase tracking-wider text-zinc-300 border border-white/10 mb-3 md:mb-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               Full Package Access
             </div>
-            <h2 className="text-2xl font-bold tracking-tight font-display text-white mt-1.5">Full 21-Page Package</h2>
+            <h2 className="text-2xl font-bold tracking-tight font-display text-white mt-1.5">
+              {activePackage === 'listing' ? 'Full 21-Page Package' : 'Full 29-Page Package'}
+            </h2>
           </div>
           
-          <div className="flex flex-col gap-3 w-full md:w-auto shrink-0 z-10 justify-center">
+          <div className="flex flex-col gap-3 w-full md:w-auto shrink-0 z-10 justify-center font-sans">
             <a 
-              href="/RLA_Full_Package.pdf" 
+              href={activePackage === 'listing' ? '/RLA_Full_Package.pdf' : '/RPA_Full_Package.pdf'} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black hover:bg-zinc-150 font-bold text-sm tracking-tight transition-all duration-200 shadow-md group border border-transparent"
+              className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black hover:bg-zinc-150 font-bold text-sm tracking-tight transition-all duration-200 shadow-md group border border-transparent cursor-pointer"
             >
               <FileText className="w-4 h-4 text-black" />
               Open PDF Package
@@ -59,12 +88,12 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 font-sans">
           <div className="bg-[#F5F5F7] rounded-3xl p-6 md:p-8 border border-transparent transition-colors hover:border-black/5 flex flex-col">
             <div className="flex items-center mb-6">
               <h3 className="text-[10px] md:text-xs font-semibold text-zinc-500 uppercase tracking-widest font-sans">Total Forms</h3>
             </div>
-            <div className="text-4xl md:text-5xl font-semibold text-black font-display mt-auto">{formsData.length}</div>
+            <div className="text-4xl md:text-5xl font-semibold text-black font-display mt-auto">{forms.length}</div>
           </div>
           <div className="bg-[#F5F5F7] rounded-3xl p-6 md:p-8 border border-transparent transition-colors hover:border-black/5 flex flex-col">
             <div className="flex items-center mb-6">
@@ -87,7 +116,7 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-3xl border border-black/5 overflow-hidden shadow-sm">
+        <div className="bg-white rounded-3xl border border-black/5 overflow-hidden shadow-sm font-sans animate-in fade-in duration-300">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -101,7 +130,7 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-black/5">
-                {formsData.map(form => (
+                {forms.map(form => (
                   <tr 
                     key={form.id} 
                     className={`hover:bg-[#F5F5F7]/50 transition-colors ${onSelectForm ? 'cursor-pointer' : ''}`}
@@ -128,3 +157,4 @@ export default function Dashboard({ onBack, onSelectForm }: DashboardProps) {
     </div>
   );
 }
+

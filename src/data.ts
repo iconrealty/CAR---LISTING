@@ -170,3 +170,190 @@ export const formsData: FormDocument[] = [
     stats: { pages: 1, startPage: 21, endPage: 21, signatures: 1, initials: 0, agentSignatures: 0 }
   }
 ];
+
+export const offerFormsData: FormDocument[] = [
+  {
+    id: 'ad',
+    acronym: 'AD',
+    title: 'Disclosure Regarding Real Estate Agency Relationship',
+    summary: 'This form discloses the types of agency relationships available (Seller\'s Agent, Buyer\'s Agent, Dual Agent) and the duties owed by the agent to the principals.',
+    importance: 'Must be provided and signed BEFORE entering into a discussion regarding a real estate transaction. It establishes the legal relationship and duties (fiduciary, honesty, disclosure) between the realtor and the client.',
+    keySections: [
+      {
+        title: "Buyer's Agent Duties",
+        description: "Fiduciary duty of utmost care, integrity, honesty, and loyalty in dealings with the Buyer."
+      },
+      {
+        title: 'Dual Agency',
+        description: 'Agent represents both Seller and Buyer. Requires consent from both. Agent cannot disclose confidential financial information or price negotiations between parties without permission.'
+      }
+    ],
+    proTip: 'Always present this form first. Explain to the buyer that client-agent representation is defined here, and dual agency is standard in brokerage operations if another broker in the same firm represents the seller.',
+    stats: { pages: 2, startPage: 1, endPage: 2, signatures: 1, initials: 0, agentSignatures: 1 }
+  },
+  {
+    id: 'rpa',
+    acronym: 'RPA',
+    title: 'California Residential Purchase Agreement',
+    summary: 'The standard real estate contract used by California buyers to submit formal offers on residential property, providing full details on pricing, finance, contingencies, and escrow directives.',
+    importance: 'The foundational master contract of any residential buy-side transaction. Once executed and signed by the seller, this form becomes a legally enforceable agreement that directs the transfer of property.',
+    keySections: [
+      {
+        title: 'Paragraph 3: Deep Dive Table (A-R)',
+        description: 'The master grid outlining crucial transaction entries, including Purchase Price, Close of Escrow, Deposit, Financing terms, and Cost Allocations.'
+      },
+      {
+        title: 'Paragraph 8: Contingencies & Durations',
+        description: 'Outlines standard buyer protections (e.g., standard 17 days for investigations, 17 days for appraisal, and loan contingencies) and details rules on how to remove them in writing.'
+      },
+      {
+        title: 'Paragraph 9: Items Included & Excluded',
+        description: 'Details what items stay or leave the property (e.g. appliances, smart home hardware, and any third-party leased utilities like solar panels).'
+      },
+      {
+        title: 'Paragraph 14: Time Periods & Cancellation Rights',
+        description: 'Governs transaction timelines (Notice to Perform, Demand to Close Escrow) and the exact conditions under which a party can cancel and seek their deposit.'
+      },
+      {
+        title: 'Paragraph 29: Liquidated Damages',
+        description: 'Limits buyer liability to up to 3% of the purchase price if the buyer defaults on the contract, provided both parties initialed this section.'
+      }
+    ],
+    proTip: 'Use Paragraph 3 (A-R Table) as a quick reference list. Always ensure buyers understand that contingency removals must be delivered in writing - they do not automatically expire.',
+    stats: { pages: 17, startPage: 3, endPage: 19, signatures: 1, initials: 18, agentSignatures: 1 }
+  },
+  {
+    id: 'frr-pa',
+    acronym: 'FRR-PA',
+    title: 'Federal Reporting Requirement Purchase Addendum',
+    summary: 'Identifies reporting obligations and conditions under FinCEN for transactions (e.g., cash sales, entity/trust purchases) to prevent money laundering.',
+    importance: 'Ensures compliance with federal rules (FinCEN) that aim to eliminate anonymous illicit flows in cash-based real estate purchases.',
+    keySections: [
+      {
+        title: 'FinCEN Reporting Obligations',
+        description: 'Specifies when escrow/title companies must report buyer identities for cash, trust, or corporate-entity transactions.'
+      },
+      {
+        title: 'Verification of Identities',
+        description: 'Requires buyers to provide valid corporate documentation and taxpayer identification numbers (TIN) upon request.'
+      }
+    ],
+    proTip: 'Remind buyers purchasing under an LLC or trust that FinCEN compliance is standard legal practice and does not threaten their transactional privacy if legitimate.',
+    stats: { pages: 1, startPage: 20, endPage: 20, signatures: 1, initials: 0, agentSignatures: 0 }
+  },
+  {
+    id: 'bia',
+    acronym: 'BIA',
+    title: 'Buyer\'s Investigation Advisory',
+    summary: 'Formally advises the buyer of their absolute responsibility to inspect and investigate the property\'s physical condition, zoning, and safety before closing.',
+    importance: 'Protects all parties by advising the buyer to perform due diligence. It explicitly details elements to double-check, emphasizing that visual inspection is not enough.',
+    keySections: [
+      {
+        title: 'Duty of Inspection',
+        description: 'Property condition is not guaranteed. Buyer has an active, affirmative duty to exercise reasonable care to discover facts.'
+      },
+      {
+        title: 'Comprehensive Review list',
+        description: 'Instructs the buyer to hire qualified specialists (structural, environmental, pests, soil stability, geologic) to verify safety.'
+      }
+    ],
+    proTip: 'Always advise the buyer to hire a professional home inspection company.',
+    stats: { pages: 2, startPage: 21, endPage: 22, signatures: 1, initials: 0, agentSignatures: 0 }
+  },
+  {
+    id: 'prbs',
+    acronym: 'PRBS',
+    title: 'Possible Representation of More Than One Buyer or Seller',
+    summary: 'Discloses that the brokerage may represent multiple clients who could be competing for the same property or selling similar properties.',
+    importance: 'Protects the brokerage by acknowledging that they might represent a buyer interested in the seller\'s property, or other sellers with competing listings in the neighborhood.',
+    keySections: [
+      {
+        title: 'Multiple Sellers & Buyers',
+        description: 'Brokerage may have listings on multiple similar properties and may work with various buyers looking at the same homes.'
+      },
+      {
+        title: 'Consent to Dual Agency',
+        description: 'The parties consent to the Brokerage acting as a dual agent if a situation arises where the Brokerage represents both the buyer and the seller in the same transaction.'
+      }
+    ],
+    proTip: 'For buyers, frame this as an indexing advantage: "We work with many sellers in this neighborhood, giving us early, inside access to potential listings!"',
+    stats: { pages: 2, startPage: 23, endPage: 24, signatures: 1, initials: 0, agentSignatures: 1 }
+  },
+  {
+    id: 'fhda',
+    acronym: 'FHDA',
+    title: 'Fair Housing and Discrimination Advisory',
+    summary: 'Advises clients on Federal and State Fair Housing laws that prohibit discrimination in real estate transactions.',
+    importance: 'Crucial for risk management. It ensures sellers and buyers are aware they cannot choose or filter transactional offers based on protected characteristics.',
+    keySections: [
+      {
+        title: 'Protected Classes',
+        description: 'Lists classes protected against discrimination, including race, color, religion, sex, gender identity, marital status, and more.'
+      },
+      {
+        title: 'Buyer Love Letters',
+        description: 'Strongly advises against sending personal letters containing pictures or personal background, to avoid unconscious bias claims.'
+      }
+    ],
+    proTip: 'Inform buyers: "We want our purchase package to be assessed strictly on its superior financial terms and secure financing, keeping us entirely safe from discrimination issues."',
+    stats: { pages: 2, startPage: 25, endPage: 26, signatures: 1, initials: 0, agentSignatures: 0 }
+  },
+  {
+    id: 'bhia',
+    acronym: 'BHIA',
+    title: 'Buyer Homeowners\' Insurance Advisory',
+    summary: 'Alerts buyers to ongoing volatility in California\'s homeowners\' insurance market and details the necessity of submitting applications early.',
+    importance: 'Prevents escrow delays by mandating early insurance investigation, due to many major carriers restricting new policies in high-fire zones.',
+    keySections: [
+      {
+        title: 'Early Insurance Actions',
+        description: 'Guides buyers to investigate the availability and price of property insurance immediately upon entering escrow.'
+      },
+      {
+        title: 'California Insurance Market State',
+        description: 'Explains carrier caps/withdrawals and details backup options (like the California FAIR Plan) if standard coverage is denied.'
+      }
+    ],
+    proTip: 'Have your buyer call their preferred insurance advisor on Day 1.',
+    stats: { pages: 1, startPage: 27, endPage: 27, signatures: 1, initials: 0, agentSignatures: 0 }
+  },
+  {
+    id: 'wfa',
+    acronym: 'WFA',
+    title: 'Wire Fraud and Electronic Funds Transfer Advisory',
+    summary: 'Warns buyers and sellers of sophisticated cybercriminals who spoof email communications to divert escrow funds to fraudulent bank accounts.',
+    importance: 'A vital safety notice instructing parties on secure wiring practices to protect their life savings from email fraud.',
+    keySections: [
+      {
+        title: 'E-mail Wire Fraud Risks',
+        description: 'Explains how hackers intercept transaction messages and send official-looking fake wire updates.'
+      },
+      {
+        title: 'Wiring Safe Steps',
+        description: 'Lays out standard wire safety protocols, emphasizing you must always call escrow on a trusted line before sending cash.'
+      }
+    ],
+    proTip: 'Establish a firm policy: "Never transfer any funds until you have called our escrow partner on the phone using a pre-established number to verify the wiring details, digit by digit."',
+    stats: { pages: 1, startPage: 28, endPage: 28, signatures: 1, initials: 0, agentSignatures: 0 }
+  },
+  {
+    id: 'ccpa',
+    acronym: 'CCPA',
+    title: 'California Consumer Privacy Act Advisory, Disclosure and Notice',
+    summary: 'Advises California residents of their rights regarding the collection, sharing, and sale of their private personal information.',
+    importance: 'A legally required notice explaining that during a real estate transaction, personal information will be collected and shared with necessary third parties (lenders, title, escrow).',
+    keySections: [
+      {
+        title: 'Data Collection & Sharing',
+        description: 'Explains that contact, address, and financial records must be shared with escrow, title agents, and banks to execute standard closings.'
+      },
+      {
+        title: 'Consumer Rights',
+        description: 'Outlines standard privacy choices, access protocols, and data deletion rights established by California law.'
+      }
+    ],
+    proTip: 'Be reassuring: "This is a standard disclosure ensuring that as we share your transaction files with title and lenders, your identity and data privacy choices remain rigorously protected."',
+    stats: { pages: 1, startPage: 29, endPage: 29, signatures: 1, initials: 0, agentSignatures: 0 }
+  }
+];
+

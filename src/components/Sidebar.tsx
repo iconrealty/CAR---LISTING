@@ -5,12 +5,14 @@ interface SidebarProps {
   forms: FormDocument[];
   selectedFormId: string;
   onSelect: (id: string) => void;
+  activePackage: 'listing' | 'offer';
+  onSwitchPackage: (pkg: 'listing' | 'offer') => void;
 }
 
-export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProps) {
+export default function Sidebar({ forms, selectedFormId, onSelect, activePackage, onSwitchPackage }: SidebarProps) {
   return (
     <aside className="w-full h-full bg-[#F5F5F7] flex flex-col z-0">
-      <div className="pt-5 pb-4 px-5 sticky top-0 z-10 shrink-0 bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-black/5 flex justify-center items-center">
+      <div className="pt-5 pb-3 px-5 sticky top-0 z-10 shrink-0 bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-black/5 flex flex-col gap-3">
         <button 
           onClick={() => onSelect('overview')}
           className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl hover:bg-black/5 transition-all group w-full border border-transparent hover:border-black/5"
@@ -20,7 +22,32 @@ export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProp
             HOME
           </span>
         </button>
+
+        {/* Apple-style Segmented Control for Package Switching */}
+        <div className="bg-[#E5E5E7] p-1 rounded-2xl flex items-center shadow-2xs border border-black/[0.02]">
+          <button
+            onClick={() => onSwitchPackage('listing')}
+            className={`flex-1 text-center py-2 rounded-xl font-bold font-sans text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              activePackage === 'listing'
+                ? 'bg-white text-black shadow-xs ring-1 ring-black/[0.01]'
+                : 'text-zinc-500 hover:text-black'
+            }`}
+          >
+            Listing Package
+          </button>
+          <button
+            onClick={() => onSwitchPackage('offer')}
+            className={`flex-1 text-center py-2 rounded-xl font-bold font-sans text-xs tracking-tight transition-all duration-200 cursor-pointer ${
+              activePackage === 'offer'
+                ? 'bg-white text-black shadow-xs ring-1 ring-black/[0.01]'
+                : 'text-zinc-550 hover:text-black'
+            }`}
+          >
+            Offer Package
+          </button>
+        </div>
       </div>
+
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
         <button
           onClick={() => onSelect('overview')}
@@ -32,7 +59,7 @@ export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProp
         >
           <div className="flex-1 min-w-0">
             <div className={`font-semibold text-sm tracking-tight font-sans ${selectedFormId === 'overview' ? 'text-white' : 'text-black'}`}>
-              Listing Package Overview
+              {activePackage === 'listing' ? 'Listing Package Overview' : 'Offer Package Overview'}
             </div>
           </div>
         </button>
@@ -57,12 +84,12 @@ export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProp
               </div>
               <div className="flex-1 min-w-0 pt-0.5">
                 <div className={`font-semibold text-sm tracking-tight mb-0.5 font-sans ${
-                  isSelected ? 'text-black' : 'text-zinc-600'
+                  isSelected ? 'text-black' : 'text-zinc-650'
                 }`}>
                   {form.acronym}
                 </div>
                 <div className={`text-xs truncate font-medium font-sans ${
-                  isSelected ? 'text-zinc-500' : 'text-zinc-400'
+                  isSelected ? 'text-zinc-550' : 'text-zinc-400'
                 }`}>
                   {form.title}
                 </div>
@@ -70,9 +97,8 @@ export default function Sidebar({ forms, selectedFormId, onSelect }: SidebarProp
             </button>
           );
         })}
-
-
       </nav>
     </aside>
   );
 }
+

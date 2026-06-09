@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
-import { formsData } from './data';
+import { formsData, offerFormsData } from './data';
 import Sidebar from './components/Sidebar';
 import FormDetails from './components/FormDetails';
 import Dashboard from './components/Dashboard';
 
 export default function App() {
+  const [activePackage, setActivePackage] = useState<'listing' | 'offer'>('listing');
   const [selectedFormId, setSelectedFormId] = useState('overview');
   const [showDetailOnMobile, setShowDetailOnMobile] = useState(false);
 
-  const selectedForm = formsData.find((f) => f.id === selectedFormId);
+  const forms = activePackage === 'listing' ? formsData : offerFormsData;
+  const selectedForm = forms.find((f) => f.id === selectedFormId);
 
   const handleSelect = (id: string) => {
     setSelectedFormId(id);
@@ -21,6 +22,11 @@ export default function App() {
     setShowDetailOnMobile(false);
   };
 
+  const handleSwitchPackage = (pkg: 'listing' | 'offer') => {
+    setActivePackage(pkg);
+    setSelectedFormId('overview');
+    setShowDetailOnMobile(false);
+  };
 
   return (
     <div className="h-screen bg-white flex flex-col font-sans overflow-hidden text-black selection:bg-zinc-200">
@@ -31,7 +37,9 @@ export default function App() {
             <h1 className="text-sm font-semibold tracking-tight font-sans">Icon Realty</h1>
           </div>
 
-          <div className="text-xs font-semibold text-zinc-500 hidden sm:block tracking-wide uppercase">C.A.R. Listing Package</div>
+          <div className="text-xs font-semibold text-zinc-500 hidden sm:block tracking-wide uppercase">
+            {activePackage === 'listing' ? 'C.A.R. Listing Package' : 'C.A.R. Offer Package'}
+          </div>
         </div>
       </header>
 
@@ -44,9 +52,11 @@ export default function App() {
           }`}
         >
           <Sidebar 
-            forms={formsData} 
+            forms={forms} 
             selectedFormId={selectedFormId} 
             onSelect={handleSelect} 
+            activePackage={activePackage}
+            onSwitchPackage={handleSwitchPackage}
           />
         </div>
 
@@ -57,12 +67,22 @@ export default function App() {
           }`}
         >
           {selectedFormId === 'overview' ? (
-            <Dashboard onBack={handleBack} onSelectForm={handleSelect} />
+            <Dashboard 
+              onBack={handleBack} 
+              onSelectForm={handleSelect} 
+              activePackage={activePackage}
+              onSwitchPackage={handleSwitchPackage}
+            />
           ) : (
-            selectedForm && <FormDetails form={selectedForm} onBack={handleBack} />
+            selectedForm && (
+              <FormDetails 
+                form={selectedForm} 
+                onBack={handleBack} 
+                activePackage={activePackage} 
+              />
+            )
           )}
         </main>
-
       </div>
     </div>
   );
