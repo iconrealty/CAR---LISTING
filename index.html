@@ -6,12 +6,22 @@
         try {
           var originalFetch = window.fetch;
           if (originalFetch) {
-            Object.defineProperty(window, 'fetch', {
-              value: originalFetch,
-              writable: true,
+            var customFetch = originalFetch;
+            var descriptor = {
+              get: function() { return customFetch; },
+              set: function(val) { customFetch = val; },
               configurable: true,
               enumerable: true
-            });
+            };
+            try {
+              Object.defineProperty(window, 'fetch', descriptor);
+            } catch (e1) {
+              try {
+                Object.defineProperty(Window.prototype, 'fetch', descriptor);
+              } catch (e2) {
+                console.warn('Failed to define fetch setter/getter on Window.prototype:', e2);
+              }
+            }
           }
         } catch (e) {
           console.warn('Failed to make window.fetch configurable:', e);

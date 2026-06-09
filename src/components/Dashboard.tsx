@@ -35,29 +35,7 @@ export default function Dashboard({ onBack, onSelectForm, activePackage, onSwitc
           </h1>
         </div>
 
-        {/* Dashboard Package switcher */}
-        <div className="mb-8 flex bg-[#F5F5F7] p-1 rounded-2xl border border-black/5 w-full sm:max-w-md select-none shrink-0 font-sans">
-          <button
-            onClick={() => onSwitchPackage('listing')}
-            className={`flex-1 py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer text-center text-sm ${
-              activePackage === 'listing' 
-                ? 'bg-white text-black shadow-xs font-bold' 
-                : 'text-zinc-550 hover:text-black font-semibold'
-            }`}
-          >
-            Listing Package
-          </button>
-          <button
-            onClick={() => onSwitchPackage('offer')}
-            className={`flex-1 py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer text-center text-sm ${
-              activePackage === 'offer' 
-                ? 'bg-white text-black shadow-xs font-bold' 
-                : 'text-zinc-550 hover:text-black font-semibold'
-            }`}
-          >
-            Offer Package
-          </button>
-        </div>
+
 
         {/* Full PDF Package CTA Banner */}
         <div className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white rounded-3xl p-6 md:p-8 mb-8 border border-zinc-800 shadow-lg relative overflow-hidden flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 font-sans">
