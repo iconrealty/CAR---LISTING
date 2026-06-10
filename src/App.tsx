@@ -48,8 +48,7 @@ export default function App() {
               }}
               className="flex items-center gap-2 text-black font-semibold tracking-tight font-sans text-sm hover:opacity-80 transition-opacity cursor-pointer"
             >
-              <span className="bg-black text-white px-2 py-0.5 rounded text-xs font-mono font-bold">ICON</span>
-              <span>Realty</span>
+              <span className="font-bold tracking-tight text-sm">Icon Realty</span>
             </button>
             {activePackage && (
               <button 
@@ -67,7 +66,7 @@ export default function App() {
           </div>
 
           <div className="text-xs font-semibold text-zinc-500 hidden sm:block tracking-wide uppercase">
-            {activePackage ? (
+            {activePackage && (
               <button
                 id="header-active-package-btn"
                 onClick={() => {
@@ -78,8 +77,6 @@ export default function App() {
               >
                 {activePackage === 'listing' ? 'Listing Package' : 'Offer Package'}
               </button>
-            ) : (
-              'Instructional Platform'
             )}
           </div>
         </div>
@@ -172,7 +169,7 @@ export default function App() {
           </div>
 
           <div className="mt-16 text-center text-xs text-zinc-400 font-medium tracking-wide uppercase">
-            Icon Realty Training & Compliance Portal
+            Icon Realty Training
           </div>
         </div>
       ) : (
