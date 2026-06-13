@@ -89,9 +89,6 @@ export default function App() {
             <h1 className="text-4xl md:text-5xl font-semibold text-black tracking-tight leading-1.1 mb-1 font-display">
               Contract Masterclass
             </h1>
-            <p className="text-zinc-500 font-sans text-sm md:text-base font-medium tracking-wide">
-              by <span className="text-black font-semibold">Paul Muner</span>
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
